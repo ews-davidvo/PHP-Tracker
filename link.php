@@ -13,6 +13,7 @@ error_reporting(E_ALL);
 
 		//Check if id exist in UrlList
 		if($result->num_rows > 0) {
+
 			$row = $result->fetch_assoc();
 
 			//Store redirect URL
@@ -22,10 +23,7 @@ error_reporting(E_ALL);
 			$userIP = getUserIpAddr();
 			$userAgent = $_SERVER['HTTP_USER_AGENT'];
 			$hostedLocationID = $row["hostedLocationID"];
-			
-			echo 'User IP is '.getUserIpAddr();
-			echo $_SERVER['HTTP_USER_AGENT'];
-			echo "<br/> id: " . $row["id"] . " redirectURL: " . $row["redirectURL"] . "hostedLocationID: " . $row["hostedLocationID"];
+			$projectID =  $row["urlProjectID"];
 
 			// Use JSON encoded string and converts
 			// it into a PHP variable
@@ -39,21 +37,14 @@ error_reporting(E_ALL);
 			$lat = $ipdat->geoplugin_latitude;
 			$long = $ipdat->geoplugin_longitude;
 			$timezone = $ipdat->geoplugin_timezone;
-			
-			// echo 'Country Name: ' . $ipdat->geoplugin_countryName . "\n";
-			// echo 'City Name: ' . $ipdat->geoplugin_city . "\n";
-			// echo 'Continent Name: ' . $ipdat->geoplugin_continentName . "\n";
-			// echo 'Latitude: ' . $ipdat->geoplugin_latitude . "\n";
-			// echo 'Longitude: ' . $ipdat->geoplugin_longitude . "\n";
-			// echo 'Currency Symbol: ' . $ipdat->geoplugin_currencySymbol . "\n";
-			// echo 'Currency Code: ' . $ipdat->geoplugin_currencyCode . "\n";
-			// echo 'Timezone: ' . $ipdat->geoplugin_timezone;
-
-			$sql = "INSERT INTO UrlActivity (ip, country, city, region, continent, latitude, longitude, timezone, useragent, urlLocationID) 
-				VALUES ('".$userIP."', '".$country."', '".$city."', '".$region."','".$continent."', '".$lat."', '".$long."', '".$timezone."', '".$userAgent."', '".$hostedLocationID."')"; 
+		
+			//Insert in UrlActivity Table
+			$sql = "INSERT INTO UrlActivity (ip, country, city, region, continent, latitude, longitude, timezone, useragent, urlLocationID, projectID) 
+				VALUES ('".$userIP."', '".$country."', '".$city."', '".$region."','".$continent."', '".$lat."', '".$long."', '".$timezone."', '".$userAgent."', '".$hostedLocationID."', '".$projectID."')"; 
 
 			$mysqli->query($sql);
-			// header('Location: '.$row["redirectURL"].'');
+
+			header('Location: '.$redirectURL.'');
 		} else {
 			header('Location: index');
 		}

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jan 04, 2022 at 04:01 PM
+-- Generation Time: Jan 04, 2022 at 04:18 PM
 -- Server version: 10.3.32-MariaDB-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -40,6 +40,7 @@ CREATE TABLE `UrlActivity` (
   `timezone` text DEFAULT NULL,
   `useragent` text NOT NULL,
   `urlLocationID` int(11) NOT NULL,
+  `projectID` int(10) NOT NULL,
   `dateCreated` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -47,11 +48,13 @@ CREATE TABLE `UrlActivity` (
 -- Dumping data for table `UrlActivity`
 --
 
-INSERT INTO `UrlActivity` (`id`, `ip`, `country`, `city`, `region`, `continent`, `latitude`, `longitude`, `timezone`, `useragent`, `urlLocationID`, `dateCreated`) VALUES
-(2, '72.38.224.26', 'Canada', 'Leamington', '', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, '2021-12-28 21:31:04'),
-(3, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, '2022-01-04 20:31:21'),
-(4, '37.19.211.131', 'Ukraine', '', '', 'Europe', '50.4522', '30.5287', 'Europe/Kiev', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/96.0.4664.116 Mobile/15E148 Safari/604.1', 1, '2022-01-04 20:32:06'),
-(5, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, '2022-01-04 20:39:21');
+INSERT INTO `UrlActivity` (`id`, `ip`, `country`, `city`, `region`, `continent`, `latitude`, `longitude`, `timezone`, `useragent`, `urlLocationID`, `projectID`, `dateCreated`) VALUES
+(2, '72.38.224.26', 'Canada', 'Leamington', '', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, 0, '2021-12-28 21:31:04'),
+(3, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, 0, '2022-01-04 20:31:21'),
+(4, '37.19.211.131', 'Ukraine', '', '', 'Europe', '50.4522', '30.5287', 'Europe/Kiev', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/96.0.4664.116 Mobile/15E148 Safari/604.1', 1, 0, '2022-01-04 20:32:06'),
+(5, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, 0, '2022-01-04 20:39:21'),
+(6, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, 1, '2022-01-04 21:17:10'),
+(7, '72.38.224.26', 'Canada', 'Leamington', 'Ontario', 'North America', '42.0545', '-82.6043', 'America/Toronto', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36', 1, 1, '2022-01-04 21:17:43');
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,7 @@ ALTER TABLE `UrlProjects`
 -- AUTO_INCREMENT for table `UrlActivity`
 --
 ALTER TABLE `UrlActivity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `UrlDeparments`
